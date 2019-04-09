@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+     has_many :rentals , as: :rentable
 end
 
 # == Schema Information
@@ -9,7 +10,9 @@ end
 #  description :text
 #  duration    :integer
 #  price       :integer
+#  progress    :integer
 #  rating      :integer
+#  status      :string
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
