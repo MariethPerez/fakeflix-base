@@ -1,6 +1,13 @@
 class Movie < ApplicationRecord
      has_many :rentals , as: :rentable
+
+     def rented
+     self.rentals.any?
+     end
+
 end
+
+
 
 # == Schema Information
 #

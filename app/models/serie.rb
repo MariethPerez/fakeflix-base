@@ -1,5 +1,9 @@
 class Serie < ApplicationRecord
      has_many :rentals , as: :rentable
+     has_many :episodes
+     def rented
+          self.rentals.any?
+     end
 end
 
 # == Schema Information

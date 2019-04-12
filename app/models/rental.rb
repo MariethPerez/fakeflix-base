@@ -1,5 +1,9 @@
 class Rental < ApplicationRecord
   belongs_to :rentable, polymorphic: true
+
+  def self.list_only(type)
+    Rental.includes(:rentable).where(rentable_type: type).map { |rental|  rental.rentable}
+  end
 end
 
 # == Schema Information

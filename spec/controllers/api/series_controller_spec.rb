@@ -32,4 +32,19 @@ RSpec.describe Api::SeriesController, type: :controller do
             expect(movies.size).to eq 0
         end
       end
-end
+      describe 'GET show' do
+        it 'returns http status ok' do
+          get :show, params:{id: @serie1}
+          expect(response).to have_http_status(:ok)
+        end
+        it 'render the correct movie' do
+          get :show, params: { id: @serie1 }
+          expected_serie = JSON.parse(response.body)
+          expect(expected_serie["id"]).to eq(@serie1.id)
+        end
+        it 'returns http status not found' do
+          get :show, params: { id: 'xxx' }
+          expect(response).to have_http_status(:not_found)
+        end
+      end
+    end
